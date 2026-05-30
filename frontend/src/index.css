@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 7%;
+    --foreground: 213 31% 91%;
+    --card: 222 47% 10%;
+    --card-foreground: 213 31% 91%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 38 92% 50%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 222 47% 14%;
+    --secondary-foreground: 213 31% 80%;
+    --muted: 223 47% 13%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 213 31% 91%;
+    --radius: 0.5rem;
+
+    --severity-critical: 0 86% 60%;
+    --severity-high: 24 95% 58%;
+    --severity-medium: 45 93% 58%;
+    --severity-low: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::selection { @apply bg-amber-500/30 text-amber-100; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-muted-foreground/40; }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glow-amber { box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }
+  .glow-red { box-shadow: 0 0 20px rgba(239, 68, 68, 0.15); }
+  .glass {
+    backdrop-filter: blur(12px);
+    background: rgba(22, 27, 34, 0.8);
+  }
+}
+
+/* Monaco editor container */
+.monaco-wrap .overflow-guard { border-radius: 0.5rem; }
+
+/* Diff viewer */
+.diff-add { @apply bg-green-500/10 text-green-300; }
+.diff-rem { @apply bg-red-500/10 text-red-300; }
+.diff-hdr { @apply text-blue-400 font-mono; }
+.diff-ctx { @apply text-muted-foreground; }
+
+/* IR highlighting */
+.ir-keyword { @apply text-violet-400 font-medium; }
+.ir-type    { @apply text-cyan-400; }
+.ir-nsw     { @apply text-amber-400 font-bold; }
+.ir-undef   { @apply text-red-400 font-bold; }
+.ir-label   { @apply text-orange-400; }
+.ir-comment { @apply text-muted-foreground italic; }
+.ir-number  { @apply text-pink-400; }
+
+/* Animated gradient border */
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(245, 158, 11, 0.3); }
+  50%       { border-color: rgba(245, 158, 11, 0.7); }
+}
+.border-pulse { animation: borderPulse 2s ease-in-out infinite; }
+
+/* Code editor gutter icons */
+.ub-gutter-critical { background: #ef4444; width: 4px !important; margin-left: 2px; border-radius: 2px; }
+.ub-gutter-high     { background: #f97316; width: 4px !important; margin-left: 2px; border-radius: 2px; }
+.ub-gutter-medium   { background: #eab308; width: 4px !important; margin-left: 2px; border-radius: 2px; }
+.ub-line-critical   { background: rgba(239, 68, 68, 0.08) !important; }
+.ub-line-high       { background: rgba(249, 115, 22, 0.07) !important; }
+.ub-line-medium     { background: rgba(234, 179, 8, 0.06) !important; }

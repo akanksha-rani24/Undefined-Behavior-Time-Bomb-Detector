@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Signed Overflow Check",
+    "filename": "01_signed_overflow.c",
+    "reference": "CWE-190 / GCC Bug PR#30475",
+    "expected_category": "signed_integer_overflow",
+    "expected_line": 18,
+    "description": "Classic x+1>x overflow check that InstCombine folds to always-true at -O2 using nsw assumption.",
+    "severity": "critical"
+  },
+  {
+    "id": 2,
+    "name": "Null Check After Dereference",
+    "filename": "02_null_deref.c",
+    "reference": "Linux kernel CVE-2011-1078 / CERT C EXP34-C",
+    "expected_category": "null_pointer_dereference",
+    "expected_line": 36,
+    "description": "Pointer dereferenced before null check; GVN eliminates the guard as dead code at -O2.",
+    "severity": "critical"
+  },
+  {
+    "id": 3,
+    "name": "Strict Aliasing Type Pun",
+    "filename": "03_strict_aliasing.c",
+    "reference": "Quake III / OpenSSL / glibc",
+    "expected_category": "strict_aliasing_violation",
+    "expected_line": 33,
+    "description": "float* and long* aliasing in fast_inv_sqrt; TBAA reorders loads at -O2.",
+    "severity": "high"
+  },
+  {
+    "id": 4,
+    "name": "Uninitialized Auth Variable",
+    "filename": "04_uninitialized.c",
+    "reference": "CVE-2014-0977 / CWE-457",
+    "expected_category": "uninitialized_variable",
+    "expected_line": 34,
+    "description": "Authentication result variable uninitialized on failure path; undef propagated at -O2.",
+    "severity": "critical"
+  },
+  {
+    "id": 5,
+    "name": "Shift Overflow in Parser",
+    "filename": "05_shift_overflow.c",
+    "reference": "CVE-2016-10190 (FFmpeg) / CVE-2022-32250",
+    "expected_category": "signed_integer_overflow",
+    "expected_line": 35,
+    "description": "Shift by potentially large amount; signed overflow in parser guards eliminated at -O2.",
+    "severity": "critical"
+  }
+]
