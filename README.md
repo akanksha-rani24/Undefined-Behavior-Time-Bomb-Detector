@@ -1,5 +1,4 @@
-# 💣 UB Time Bomb Detector
-
+#  UB Time Bomb Detector
 **Research-grade static analysis tool** that detects C/C++ undefined behavior patterns that appear harmless at `-O0` but are silently exploited by compiler optimizations at `-O2/-O3`.
 
 ```
